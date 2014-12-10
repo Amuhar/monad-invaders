@@ -18,6 +18,7 @@ executable monad-invaders
   -- other-modules:       
   -- other-extensions:    
   build-depends:       base >=4.7 && <4.8,
-                       helm >= 0.7
+                       helm >= 0.7,
+                       mtl
   -- hs-source-dirs:      
   default-language:    Haskell2010

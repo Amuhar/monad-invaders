@@ -1,7 +1,7 @@
 module Main where
 
 import Data.Ord 
-
+import Control.Monad.Reader
 import FRP.Helm
 import qualified FRP.Helm.Graphics  as Graphics
 import qualified FRP.Helm.Keyboard  as Keyboard
@@ -14,10 +14,22 @@ import qualified FRP.Helm.Time      as Time
 -- орфографические, синтаксические, пунктуационные, семантические
 -- и другие ошибки. 
 
+
+--------------------------------------------------------
+-----------------------Utilityes------------------------
+--------------------------------------------------------
+data GameConfig = GameConfig {windowWidth :: Int, windowHeight :: Int}
+
+--newtype Game = 
+
+parseConfig :: String -> GameConfig
+parseConfig str = 
+  let [wWidth, wHeight] = words str
+  in GameConfig (read wWidth :: Int) (read wHeight :: Int)
+
 --------------------------------------------------------
 -------------Types for game enteties states-------------
 --------------------------------------------------------
-
 -- Статус игры: ещё не начата, в процессе, окончена
 data GameStatus = Startup | InProcess | Over
   deriving (Enum, Bounded,Eq)
